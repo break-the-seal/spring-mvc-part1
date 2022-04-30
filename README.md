@@ -43,3 +43,12 @@
 - Spring MVC(Web Servlet) / Spring WebFlux(Web Reactive)
 - Java View Template
   - JSP, Freemarker, Velocity, **Thymeleaf**
+
+<br>
+
+## Servlet
+
+### HttpServletRequest
+- Servlet은 HTTP 요청 메시지를 파싱해서 편리하게 사용할 수 있게 해준다. (`HttpServletRequest`)
+- 임시 저장소 기능: `request.setAttribute(name, value)` / `request.getAttribute(name)`
+- 세션 기능: `request.getSession(create: true)`
