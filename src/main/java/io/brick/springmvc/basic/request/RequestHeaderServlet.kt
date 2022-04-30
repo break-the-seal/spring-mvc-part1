@@ -62,7 +62,6 @@ class RequestHeaderServlet : HttpServlet() {
         request.headerNames.asIterator()
             .forEachRemaining { headerName: String -> headerNameList.add("headerName: ${headerName}") }
 
-
         logger.info {
             """
                 |
