@@ -23,14 +23,23 @@
 - 요청당 쓰레드 생성
   - 동시 처리 가능
   - but, 생성 비용 문제, Context Switching 비용, 서버의 임계점 over 문제 존재
-- Thread Pool
+- **Thread Pool**
   - 미리 생성한 쓰레드들을 풀에 보관하고 관리
   - 톰캣은 기본 200개 설정 (개인 설정 가능)
   - 사용과 반납으로 이루어짐 (모두 사용 중인 경우 추가 요청 거절, 대기 설정 가능)
   - max thread 튜닝이 필요함(nGrinder 사용해서 성능 테스트 수행 가능)
 
 ### HTML, HTTP API, CSR, SSR
-- HTML
-- HTTP API
-- CSR
-- SSR
+- HTML: 정적, 동적으로 HTML 파일 생성해서 전달
+- HTTP API: 데이터 전달(JSON 형식)
+- SSR(Server Side Rendering): 서버에서 최종 HTML 생성해서 전달(Thymeleaf, JSP)
+- CSR(Client Side Rendering): JS 사용해서 웹브라우저에서 동적으로 생성(React, Vue)
+
+### 자바 백엔드 웹 기술 역사
+- Servlet
+- JSP
+- Servlet/JSP 조합 MVC 패턴
+- 애노테이션 기반 스프링 MVC 등장 -> 스프링 부트
+- Spring MVC(Web Servlet) / Spring WebFlux(Web Reactive)
+- Java View Template
+  - JSP, Freemarker, Velocity, **Thymeleaf**
