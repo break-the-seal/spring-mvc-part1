@@ -49,6 +49,17 @@
 ## Servlet
 
 ### HttpServletRequest
+`basic.request.RequestHeaderServlet.kt` 참고
 - Servlet은 HTTP 요청 메시지를 파싱해서 편리하게 사용할 수 있게 해준다. (`HttpServletRequest`)
 - 임시 저장소 기능: `request.setAttribute(name, value)` / `request.getAttribute(name)`
 - 세션 기능: `request.getSession(create: true)`
+
+### HTTP 요청 데이터
+3가지 유형을 기억하자
+- `GET` Query Parameter: Query String 이용, `/url?username=hello&age=20`
+- `POST` HTML Form
+  - content-type: `application/x-www-form-urlencoded`
+  - `username=hello&age=20` 형태로 message body에 전달
+- `POST` message body data 직접 전달: **JSON**, XML, TEXT(POST, PUT, PATCH 에서 사용)
+
+### 
