@@ -1,6 +1,6 @@
 package io.brick.springmvc.basic
 
 data class HelloData(
-    val username: String? = null,
-    val age: Int? = null
+    var username: String? = null,
+    var age: Int? = null
 )
