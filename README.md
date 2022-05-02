@@ -18,3 +18,6 @@
   * *"임시 저장소 기능"* : http 요청 시작부터 끝날때까지 유지 ex) setAttribute, getAttribute
   * *"세션 관리 기능"*
 
+* Http 요청 데이터
+  * Get 메서드의 쿼리 파라미터와 Post 메서드의 html form 데이터 형식은 동일하기 때문에 request.getParameter로 처리 가능
+  * 
