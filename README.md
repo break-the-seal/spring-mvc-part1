@@ -20,4 +20,10 @@
 
 * Http 요청 데이터
   * Get 메서드의 쿼리 파라미터와 Post 메서드의 html form 데이터 형식은 동일하기 때문에 request.getParameter로 처리 가능
-  * 
+
+### 서블릿, JSP, MVC 패턴
+* 서블릿: Java 비즈니스 로직 내에서 html 출력
+* JSP: Html 내에서 Java 비즈니스 로직 활용
+> 비즈니스 로직과 화면(view)의 역할에 대한 분리가 필요!!
+
+💡 MVC 패턴 
