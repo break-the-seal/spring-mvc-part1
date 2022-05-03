@@ -1,4 +1,4 @@
-package io.brick.springmvc.domain.membrer
+package io.brick.springmvc.domain.member
 
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*

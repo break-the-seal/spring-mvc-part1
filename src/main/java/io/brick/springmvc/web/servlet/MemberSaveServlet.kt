@@ -1,7 +1,7 @@
 package io.brick.springmvc.web.servlet
 
-import io.brick.springmvc.domain.membrer.Member
-import io.brick.springmvc.domain.membrer.MemberRepository
+import io.brick.springmvc.domain.member.Member
+import io.brick.springmvc.domain.member.MemberRepository
 import mu.KLogging
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet

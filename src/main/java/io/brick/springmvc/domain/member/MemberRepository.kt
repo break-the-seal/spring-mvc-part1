@@ -1,4 +1,4 @@
-package io.brick.springmvc.domain.membrer
+package io.brick.springmvc.domain.member
 
 class MemberRepository private constructor(){
     companion object {
