@@ -62,4 +62,18 @@
   - `username=hello&age=20` 형태로 message body에 전달
 - `POST` message body data 직접 전달: **JSON**, XML, TEXT(POST, PUT, PATCH 에서 사용)
 
-### 
+## MVC 프레임워크 만들기
+
+### 프론트 컨트롤러 패턴
+- 여러 Controller Servlet에서 공통으로 수행하던 작업들을 FrontController 하나에서 적용
+- 모든 요청에 대해 FrontController가 받아들이고 요청 각각에 해당하는 Controller로 분기처리
+- Spring MVC의 `DispatcherServlet`
+
+### 도입
+- v1: URL 매핑 정보에서 컨트롤러 조회 및 호출
+- v2: View 객체 적용, `render()`에서 forward 하는 작업 수행
+- v3
+  - Servlet 중복 제거: `HttpServletRequest`, `HttpServletResponse` 제거 및 `ModelView` 도입
+  - View 이름 중복 제거: `/WEB-INF/views/new-form.jsp` -> `new-form`
+- v4:
+- v5:

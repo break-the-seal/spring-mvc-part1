@@ -1,16 +1,14 @@
-package io.brick.springmvc.web.servletmvc
+package io.brick.springmvc.web.frontcontroller.v1.controller
 
 import io.brick.springmvc.domain.member.MemberRepository
-import javax.servlet.annotation.WebServlet
-import javax.servlet.http.HttpServlet
+import io.brick.springmvc.web.frontcontroller.v1.ControllerV1
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@WebServlet(name = "mvcMemberListServlet", urlPatterns = ["/servlet-mvc/members"])
-class MvcMemberListServlet: HttpServlet() {
+class MemberListControllerV1: ControllerV1 {
     private val memberRepository = MemberRepository.getInstance()
 
-    override fun service(request: HttpServletRequest, response: HttpServletResponse) {
+    override fun process(request: HttpServletRequest, response: HttpServletResponse) {
         val members = memberRepository.findAll()
 
         request.setAttribute("members", members)
