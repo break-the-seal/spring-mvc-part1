@@ -1,25 +1,23 @@
-package io.brick.springmvc.web.frontcontroller.v2.controller
+package io.brick.springmvc.web.frontcontroller.v4
 
 import io.brick.springmvc.web.frontcontroller.MyView
-import io.brick.springmvc.web.frontcontroller.v2.ControllerV2
-import io.brick.springmvc.web.frontcontroller.v3.ControllerV3
-import io.brick.springmvc.web.frontcontroller.v3.controller.MemberFormControllerV3
-import io.brick.springmvc.web.frontcontroller.v3.controller.MemberListControllerV3
-import io.brick.springmvc.web.frontcontroller.v3.controller.MemberSaveControllerV3
+import io.brick.springmvc.web.frontcontroller.v4.controller.MemberFormControllerV4
+import io.brick.springmvc.web.frontcontroller.v4.controller.MemberListControllerV4
+import io.brick.springmvc.web.frontcontroller.v4.controller.MemberSaveControllerV4
 import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@WebServlet(name = "frontControllerServletV", urlPatterns = ["/front-controller/v3/*"])
-class FrontControllerServletV3 : HttpServlet() {
+@WebServlet(name = "frontControllerServletV4", urlPatterns = ["/front-controller/v4/*"])
+class FrontControllerServletV4 : HttpServlet() {
 
-    private var controllerMap = mutableMapOf<String, ControllerV3>()
+    private var controllerMap = mutableMapOf<String, ControllerV4>()
 
     init {
-        controllerMap["/front-controller/v2/members/new-form"] = MemberFormControllerV3()
-        controllerMap["/front-controller/v2/members/save"] = MemberSaveControllerV3()
-        controllerMap["/front-controller/v2/members"] = MemberListControllerV3()
+        controllerMap["/front-controller/v4/members/new-form"] = MemberFormControllerV4()
+        controllerMap["/front-controller/v4/members/save"] = MemberSaveControllerV4()
+        controllerMap["/front-controller/v4/members"] = MemberListControllerV4()
     }
 
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
@@ -30,15 +28,16 @@ class FrontControllerServletV3 : HttpServlet() {
             return
         }
 
-        // paramMap 생성 및 ModelView 반환
+        // paramMap, model 생성 및 view-name 반환
         val paramMap = createParamMap(request)
-        val mv = controller.process(paramMap)
+        val model = mutableMapOf<String, Any>()
+        val viewname = controller.process(paramMap, model)
 
         // view-resolver를 통해 MyView 생성 (/WEB-INF 경로 추가)
-        val view = viewResolver(mv.viewName)
+        val view = viewResolver(viewname)
 
         // model까지 해서 render 과정
-        view.render(mv.model, request, response)
+        view.render(model, request, response)
     }
 
     private fun viewResolver(viewName: String): MyView {

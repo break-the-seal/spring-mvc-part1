@@ -1,11 +1,10 @@
-package io.brick.springmvc.web.frontcontroller.v3.controller
+package io.brick.springmvc.web.frontcontroller.v4.controller
 
-import io.brick.springmvc.web.frontcontroller.ModelView
-import io.brick.springmvc.web.frontcontroller.v3.ControllerV3
+import io.brick.springmvc.web.frontcontroller.v4.ControllerV4
 
-class MemberFormControllerV3 : ControllerV3 {
+class MemberFormControllerV4 : ControllerV4 {
 
-    override fun process(paramMap: MutableMap<String, String>): ModelView {
-        return ModelView("new-form")
+    override fun process(paramMap: MutableMap<String, String>, model: MutableMap<String, Any>): String {
+        return "new-form"
     }
 }
