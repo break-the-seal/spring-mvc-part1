@@ -74,6 +74,10 @@
 - v2: View 객체 적용, `render()`에서 forward 하는 작업 수행
 - v3
   - Servlet 중복 제거: `HttpServletRequest`, `HttpServletResponse` 제거 및 `ModelView` 도입
-  - View 이름 중복 제거: `/WEB-INF/views/new-form.jsp` -> `new-form`
-- v4:
-- v5:
+  - View 이름 중복 제거: `viewResolver` 도입 -> `/WEB-INF/views/new-form.jsp` -> `new-form`
+- v4: 실용성 있게 변경
+  - `ModelView` 반환 제거: Controller 단에서 기존 ModelView 반환하는 방식에서 `viewName`(String)만 반환하는 것으로 수정
+  - model 전달: FrontController에서 Model을 직접 생성하고 Controller에 전달해서 사용
+- v5: FrontController가 다양한 방식의 컨트롤러를 처리할 수 있도록 변경(Adapter 패턴)
+  - v3, v4 controller 방식 지원
+  - adapter 패턴 활용(`supports` -> `handle`)
