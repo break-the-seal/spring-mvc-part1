@@ -1,4 +1,4 @@
-package io.brick.springmvc.web.frontcontroller.v3
+package io.brick.springmvc.web.frontcontroller.v2.controller
 
 import io.brick.springmvc.web.frontcontroller.MyView
 import io.brick.springmvc.web.frontcontroller.v2.ControllerV2
@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@WebServlet(name = "frontControllerServletV3", urlPatterns = ["/front-controller/v3/*"])
+@WebServlet(name = "frontControllerServletV", urlPatterns = ["/front-controller/v3/*"])
 class FrontControllerServletV3 : HttpServlet() {
 
     private var controllerMap = mutableMapOf<String, ControllerV3>()
 
     init {
-        controllerMap["/front-controller/v3/members/new-form"] = MemberFormControllerV3()
-        controllerMap["/front-controller/v3/members/save"] = MemberSaveControllerV3()
-        controllerMap["/front-controller/v3/members"] = MemberListControllerV3()
+        controllerMap["/front-controller/v2/members/new-form"] = MemberFormControllerV3()
+        controllerMap["/front-controller/v2/members/save"] = MemberSaveControllerV3()
+        controllerMap["/front-controller/v2/members"] = MemberListControllerV3()
     }
 
     override fun service(request: HttpServletRequest, response: HttpServletResponse) {
