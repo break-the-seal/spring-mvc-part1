@@ -54,5 +54,9 @@ Front-Controller 패턴
 * 프론트 컨트롤러를 제외한 나머지 컨트롤러는 서블릿을 사용하지 않아도 됨
 * 스프링 MVC의 *Dispatcher Servlet*이 Front-Controller 패턴으로 구현되어있음
 
-
-
+예제 내용
+* v1: front-controller 도입
+* v2: view 분리
+* v3: model 추가
+* v4: 컨트롤러에 model도 함께 전달
+* v5: 어댑터 패턴 적용

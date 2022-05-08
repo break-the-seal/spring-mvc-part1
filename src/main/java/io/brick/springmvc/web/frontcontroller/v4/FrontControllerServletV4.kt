@@ -31,10 +31,10 @@ class FrontControllerServletV4 : HttpServlet() {
         // paramMap, model 생성 및 view-name 반환
         val paramMap = createParamMap(request)
         val model = mutableMapOf<String, Any>()
-        val viewname = controller.process(paramMap, model)
+        val viewName = controller.process(paramMap, model)
 
         // view-resolver를 통해 MyView 생성 (/WEB-INF 경로 추가)
-        val view = viewResolver(viewname)
+        val view = viewResolver(viewName)
 
         // model까지 해서 render 과정
         view.render(model, request, response)
