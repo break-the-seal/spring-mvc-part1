@@ -11,4 +11,17 @@ class MyView(
         val dispatcher = request.getRequestDispatcher(viewPath)
         dispatcher.forward(request, response)
     }
+
+    fun render(model: MutableMap<String, Any>, request: HttpServletRequest, response: HttpServletResponse) {
+        modelToAttribute(model, request)
+        val dispatcher = request.getRequestDispatcher(viewPath)
+        dispatcher.forward(request, response)
+    }
+
+    private fun modelToAttribute(
+        model: MutableMap<String, Any>,
+        request: HttpServletRequest
+    ) {
+        model.forEach { (k, v) -> request.setAttribute(k, v) }
+    }
 }
