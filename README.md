@@ -81,3 +81,50 @@
 - v5: FrontController가 다양한 방식의 컨트롤러를 처리할 수 있도록 변경(Adapter 패턴)
   - v3, v4 controller 방식 지원
   - adapter 패턴 활용(`supports` -> `handle`)
+
+<br>
+
+## 스프링 MVC 구조 이해
+
+### 스프링 MVC 전체 구조
+- `FrontController` -> `DispatcherServlet`
+1. handlerMapping
+2. handlerAdapter List(supports)
+3. handlerAdapter handle
+4. viewResolver
+5. View render(model)
+
+- `FrameworkServlet.service()`
+- `DispatcherServlet.doDispatch()` -> 여기서 기존에 `FrontControllerServletV5` 내용이 담겨있음
+- Spring MVC는 모든 부분에서 인터페이스화를 통해 **OCP**를 실현하고 있다.
+- 주요 인터페이스 목록
+  - `HandlerMapping`, `HandlerAdapter`, `ViewResolver`, `View`
+
+### 핸들러 매핑과 핸들러 어댑터
+- Controller interface: 옛날 방식의 Controller 적용
+- **HandlerMapping**
+  - `RequestMappingHandlerMapping`: 어노테이션 기반 컨트롤러(`@RequestMapping`, `@Controller`)에서 사용
+  - `BeanNameUrlHandlerMapping`: 스프링 빈 이름으로 핸들러를 매칭
+- **HandlerAdapter**
+  - `RequestMappingHandlerAdapter`
+  - `HttpRequestHandlerAdapter`
+  - `SimpleControllerHandlerAdapter`
+- OldController(Controller interface 구현체)
+  - `BeanNameUrlHandlerMapping` / `SimpleControllerHandlerAdapter`
+- MyHttpRequestHandler(HttpServletHandler interface 구현체)
+  - `BeanNameUrlHandlerMapping` / `HttpRequestHandlerAdapter`
+
+### ViewResolver
+- ViewResolver
+  - `BeanNameViewResolver`: 빈 이름으로 View를 찾아서 반환(ex. 엑셀 파일 생성 기능에 사용)
+  - `InternalResourceViewResolver`: JSP 처리가능한 View 반환(`InternalResourceView`)
+  - `ThymeleafViewResolver`: thymeleaf 전용
+
+### Spring MVC 시작
+- `@Controller`
+  - `RequestMappingHandlerMapping`에서 스프링 MVC에 어노테이션 기반 컨트롤러로 인식
+- `@RequestMapping`
+  - `RequestMappingHandlerMapping`
+  - `RequestMappingHandlerAdapter`
+- 참고
+  - @Controller, @RequestMapping(bean 등록과 함께) 둘 중에 하나가 class level에 지정되어 있으면 Spring MVC 컨트롤러로 인식
