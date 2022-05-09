@@ -3,7 +3,7 @@
 - Spring Boot `v2.6.7`
 - kotlin `v1.6.21`
 
-## 웹 애플리케이션의 이해
+## :pushpin: 웹 애플리케이션의 이해
 
 ### 웹서버, 웹 애플리케이션 서버
 - 웹서버: 정적 리소스(파일) 제공
@@ -46,7 +46,7 @@
 
 <br>
 
-## Servlet
+## :pushpin: Servlet
 
 ### HttpServletRequest
 `basic.request.RequestHeaderServlet.kt` 참고
@@ -62,7 +62,9 @@
   - `username=hello&age=20` 형태로 message body에 전달
 - `POST` message body data 직접 전달: **JSON**, XML, TEXT(POST, PUT, PATCH 에서 사용)
 
-## MVC 프레임워크 만들기
+<br>
+
+## :pushpin: MVC 프레임워크 만들기
 
 ### 프론트 컨트롤러 패턴
 - 여러 Controller Servlet에서 공통으로 수행하던 작업들을 FrontController 하나에서 적용
@@ -84,7 +86,7 @@
 
 <br>
 
-## 스프링 MVC 구조 이해
+## :pushpin: 스프링 MVC 구조 이해
 
 ### 스프링 MVC 전체 구조
 - `FrontController` -> `DispatcherServlet`
