@@ -41,6 +41,9 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+    // logger
+    implementation('io.github.microutils:kotlin-logging:2.1.21')
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

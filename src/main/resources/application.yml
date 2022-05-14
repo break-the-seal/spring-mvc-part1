@@ -1,2 +1,13 @@
 server:
   port: 8081
+
+# 전체 log-level 설정
+#logging:
+#  level:
+#    root: info
+
+# 지정한 패키지와 그 하위 log-level 설정
+logging:
+  level:
+    io.brick.springmvc:
+      basic: debug
