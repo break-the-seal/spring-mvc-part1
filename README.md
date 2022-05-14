@@ -13,3 +13,9 @@
   * warn
   * error
 
+---
+### 요청 매핑
+@Controller: 반환 값이 String이면, view를 찾고 랜더링 \
+@RestController: 반환 값이 String이면, Http 메세지 body에 바로 입력
+
+
