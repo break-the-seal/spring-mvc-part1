@@ -1,0 +1,6 @@
+# default INFO
+logging:
+  level:
+    io.brick.springmvc: info
+#    root is the entire project's logging level (including Spring plugins)
+#    root: info
