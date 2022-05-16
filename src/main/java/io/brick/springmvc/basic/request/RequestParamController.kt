@@ -1,12 +1,15 @@
 package io.brick.springmvc.basic.request
 
+import io.brick.springmvc.basic.HelloData
 import mu.KLogging
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+
 
 @Controller
 class RequestParamController {
@@ -108,6 +111,24 @@ class RequestParamController {
     @RequestMapping("/request-param-map")
     fun requestParamMap(@RequestParam paramMap: Map<String?, Any?>): String? {
         logger.info("username={}, age={}", paramMap["username"], paramMap["age"])
+        return "ok"
+    }
+
+    /**
+     * @ModelAttribute 사용
+     * 참고: model.addAttribute(helloData) 코드도 함께 자동 적용됨, 뒤에 model을 설명할 때 자세히 설명
+     */
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    fun modelAttributeV1(@ModelAttribute helloData: HelloData): String {
+        logger.info("username={}, age={}", helloData.username, helloData.age)
+        return "ok"
+    }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    fun modelAttributeV2(helloData: HelloData): String {
+        logger.info("username={}, age={}", helloData.username, helloData.age)
         return "ok"
     }
 }
