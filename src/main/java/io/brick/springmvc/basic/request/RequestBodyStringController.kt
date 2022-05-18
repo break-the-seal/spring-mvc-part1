@@ -47,6 +47,14 @@ class RequestBodyStringController {
         return HttpEntity("ok")
     }
 
+    /**
+     * @RequestBody
+     * - 메시지 바디 정보를 직접 조회(@RequestParam X, @ModelAttribute X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     * @ResponseBody
+     * - 메시지 바디 정보를 직접 반환(view 조회 X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     */
     @ResponseBody
     @PostMapping("/request-body-string-v4")
     fun requestBodyStringV4(@RequestBody messageBody: String): String {
