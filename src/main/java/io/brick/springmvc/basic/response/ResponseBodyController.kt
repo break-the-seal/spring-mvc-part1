@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.bind.annotation.RestController
 import javax.servlet.http.HttpServletResponse
 
-@Controller
-//  @ResponseBody -> 클래스 단위로 설정을 하면, 하위 메서드들은 view를 사용하지 않도록 적용
-//      => 이를 한방에 해결해준게 @RestController = @Controller + @ResponseBody
+// @Controller
+// @ResponseBody -> 클래스 단위로 설정을 하면, 하위 메서드들은 view를 사용하지 않도록 적용
+//     => 이를 한방에 해결해준게 @RestController = @Controller + @ResponseBody
+@RestController
 class ResponseBodyController {
 
     companion object: KLogging()
