@@ -5,6 +5,7 @@ import io.brick.springmvc.domain.item.ItemRepository
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import javax.annotation.PostConstruct
 
 @Controller
@@ -67,8 +68,7 @@ class BasicItemController(
 
 //    @PostMapping("/add")
     fun addItemV3(
-        @ModelAttribute item: Item,
-        model: Model
+        @ModelAttribute item: Item
     ): String {
         itemRepository.save(item)
 
@@ -78,15 +78,36 @@ class BasicItemController(
     }
 
     // @ModelAttribute 아예 생략 가능
-    @PostMapping("/add")
+    //    @PostMapping("/add")
     fun addItemV4(
-        item: Item,
-        model: Model
+        item: Item
+    ): String {
+        itemRepository.save(item)
+        return "basic/item"
+    }
+
+//    @PostMapping("/add")
+    fun addItemV5(
+        item: Item
     ): String {
         itemRepository.save(item)
 
         // PRG (POST - Redirect - GET)
         return "redirect:/basic/items/${item.id}"
+    }
+
+    // RedirectAttributes - url 치환도 해주고 나머지는 query param 형식으로 넣어준다.
+    @PostMapping("/add")
+    fun addItemV6(
+        item: Item,
+        redirectAttributes: RedirectAttributes
+    ): String {
+        val savedItem = itemRepository.save(item)
+
+        redirectAttributes.addAttribute("itemId", savedItem.id)
+        redirectAttributes.addAttribute("status", true)
+        // redirectAttributes에 지정한 itemId가 자동으로 적용됨
+        return "redirect:/basic/items/{itemId}"
     }
 
     @GetMapping("/{itemId}/edit")
